@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+
+{% block title %}Officer Panel{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h2><i class="fa-solid fa-shield-halved"></i> Officer Dispatch Panel</h2>
+        <button class="btn btn-danger pulse" onclick="openModal('alert-modal')">
+            <i class="fa-solid fa-tower-broadcast"></i> Broadcast Alert
+        </button>
+    </div>
+    
+    <div class="dashboard-grid">
+        <div class="glass-panel stat-card" style="cursor: pointer;" onclick="filterQueue('pending')">
+            <div class="stat-icon" style="color: var(--color-critical); background: rgba(239, 68, 68, 0.1);"><i class="fa-solid fa-bell"></i></div>
+            <div class="stat-content">
+                <h3 id="stat-pending">0</h3>
+                <p>Pending Dispatch</p>
+            </div>
+        </div>
+        <div class="glass-panel stat-card" style="cursor: pointer;" onclick="filterQueue('investigating')">
+            <div class="stat-icon" style="color: var(--status-investigating); background: rgba(59, 130, 246, 0.1);"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="stat-content">
+                <h3 id="stat-investigating">0</h3>
+                <p>Active Investigations</p>
+            </div>
+        </div>
+        <div class="glass-panel stat-card" style="cursor: pointer;" onclick="filterQueue('')">
+            <div class="stat-icon"><i class="fa-solid fa-list"></i></div>
+            <div class="stat-content">
+                <h3 id="stat-total">0</h3>
+                <p>Total Reports</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Active Queue -->
+    <div class="glass-panel" style="padding: 25px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">
+            <h3 style="margin: 0;" id="queue-title">Incident Queue (All)</h3>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="search-input" class="form-control" placeholder="Search reports..." style="padding: 8px 15px; width: 250px;">
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Severity</th>
+                        <th>Category</th>
+                        <th>Title / Location</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="queue-body">
+                    <tr><td colspan="6" style="text-align: center; padding: 30px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Pagination controls could go here -->
+    </div>
+</div>
+
+<!-- Broadcast Alert Modal -->
+<div class="modal-overlay" id="alert-modal">
+    <div class="modal-content glass-panel">
+        <div class="modal-header">
+            <h3 style="color: var(--color-critical);"><i class="fa-solid fa-tower-broadcast"></i> Broadcast Area Alert</h3>
+            <button class="modal-close" onclick="closeModal('alert-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="alert-form">
+                <div class="form-group">
+                    <label class="form-label">Alert Title</label>
+                    <input type="text" name="title" class="form-control" required placeholder="e.g., Active Shooter, Road Block">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Severity Level</label>
+                    <select name="severity" class="form-control" required>
+                        <option value="medium">Medium (Advisory)</option>
+                        <option value="high">High (Warning)</option>
+                        <option value="critical">Critical (Immediate Danger)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Message / Instructions to Citizens</label>
+                    <textarea name="message" class="form-control" rows="4" required placeholder="Avoid the area..."></textarea>
+                </div>
+                
+                <!-- Simplified for demo: Not using map picker for alert to save space, but could add it -->
+                
+                <button type="submit" class="btn btn-danger" style="width: 100%;">Send Broadcast Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let currentFilter = '';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!Auth.requireRole(['officer', 'admin'])) return;
+        
+        window.refreshOfficerQueue = fetchQueue;
+        fetchQueue();
+        
+        // Setup Search
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            fetchQueue(currentFilter, e.target.value);
+        });
+        
+        // Alert Form
+        document.getElementById('alert-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const btn = form.querySelector('button');
+            
+            const data = {
+                title: form.title.value,
+                severity: form.severity.value,
+                message: form.message.value
+            };
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Broadcasting...';
+            
+            try {
+                await App.api('/alerts', {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+                App.showToast('Broadcast Sent', 'Alert has been sent to all citizens.', 'success');
+                closeModal('alert-modal');
+                form.reset();
+            } catch (err) {
+                App.showToast('Failed to send', err.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Send Broadcast Now';
+            }
+        });
+    });
+    
+    function filterQueue(status) {
+        currentFilter = status;
+        const titles = {
+            '': 'Incident Queue (All)',
+            'pending': 'Pending Dispatch',
+            'investigating': 'Active Investigations'
+        };
+        document.getElementById('queue-title').innerText = titles[status];
+        fetchQueue(status);
+    }
+    
+    async function fetchQueue(status = '', search = '') {
+        try {
+            let url = `/reports?per_page=50`;
+            if (status) url += `&status=${status}`;
+            if (search) url += `&search=${search}`;
+            
+            const data = await App.api(url);
+            
+            // Only update stats if we aren't filtering/searching
+            if (!status && !search) {
+                document.getElementById('stat-total').innerText = data.total;
+                
+                // Do a quick fetch for pending/investigating counts to populate badges accurately
+                App.api('/reports?status=pending').then(d => document.getElementById('stat-pending').innerText = d.total);
+                App.api('/reports?status=investigating').then(d => document.getElementById('stat-investigating').innerText = d.total);
+            }
+            
+            renderTable(data.reports);
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    function renderTable(reports) {
+        const tbody = document.getElementById('queue-body');
+        
+        if (reports.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 30px; color: var(--text-muted);">No reports found.</td></tr>`;
+            return;
+        }
+        
+        let html = '';
+        reports.forEach(r => {
+            html += `
+                <tr style="cursor: pointer;" onclick="window.location.href='/report/${r.id}'">
+                    <td style="white-space: nowrap; font-size: 0.85rem; color: var(--text-muted);">
+                        ${App.formatDate(r.created_at).split(', ')[0]}<br>
+                        ${App.formatDate(r.created_at).split(', ')[1]}
+                    </td>
+                    <td>${App.getSeverityBadge(r.severity)}</td>
+                    <td>${r.category?.icon || ''} ${r.category?.name || 'Unknown'}</td>
+                    <td>
+                        <strong>${r.title}</strong><br>
+                        <small style="color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> ${r.address || 'Location unknown'}</small>
+                    </td>
+                    <td>${App.getStatusBadge(r.status)}</td>
+                    <td>
+                        <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.8rem;" onclick="event.stopPropagation(); window.location.href='/report/${r.id}'">
+                            View
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        tbody.innerHTML = html;
+    }
+    
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+</script>
+{% endblock %}

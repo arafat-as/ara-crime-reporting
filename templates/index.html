@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        position: relative;
+        padding: 80px 0;
+        text-align: center;
+        overflow: hidden;
+    }
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(0,212,255,0.1) 0%, rgba(10,14,39,0) 50%);
+        z-index: -1;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #fff, #00d4ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto 40px auto;
+    }
+    
+    .hero-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin-bottom: 60px;
+    }
+    
+    .map-section {
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+    
+    .stats-row {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 40px;
+    }
+    
+    .stat-item {
+        text-align: center;
+    }
+    
+    .stat-value {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary-color);
+    }
+    
+    .stat-label {
+        color: var(--text-muted);
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>Safety in Real-Time.</h1>
+        <p>A modern, community-driven platform connecting citizens with law enforcement to report crimes, receive critical alerts, and make our neighborhoods safer.</p>
+        
+        <div class="hero-actions">
+            <a href="/report/new" class="btn btn-primary" style="padding: 15px 30px; font-size: 1.1rem;">
+                <i class="fa-solid fa-bullhorn"></i> Report a Crime
+            </a>
+            <a href="#map-section" class="btn btn-outline" style="padding: 15px 30px; font-size: 1.1rem;">
+                <i class="fa-solid fa-map-location-dot"></i> View Crime Map
+            </a>
+        </div>
+        
+        <div class="stats-row" id="public-stats">
+            <div class="stat-item">
+                <div class="stat-value" id="stat-reports">--</div>
+                <div class="stat-label">Reports Processed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-alerts">--</div>
+                <div class="stat-label">Active Alerts</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-resolution">--%</div>
+                <div class="stat-label">Resolution Rate</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-bottom: 60px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <h2><i class="fa-solid fa-clock-rotate-left"></i> Recent Activity feed</h2>
+    </div>
+    
+    <div id="recent-reports" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px;">
+        <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-muted);">
+            <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+            <p style="margin-top: 10px;">Loading latest reports...</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            // Fetch public stats
+            fetch('/api/reports?per_page=5')
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById('stat-reports').innerText = data.total || 0;
+                    
+                    // Render public reports feed
+                    const container = document.getElementById('recent-reports');
+                    if (data.reports && data.reports.length > 0) {
+                        let html = '';
+                        data.reports.forEach(report => {
+                            // Extract just the time part for "posted time"
+                            const fullDate = App.formatDate(report.created_at);
+                            
+                            html += `
+                                <div class="glass-panel" style="padding: 20px; border-radius: 12px; cursor: pointer; transition: transform 0.2s; border: 1px solid rgba(255,255,255,0.05);" onclick="window.location.href='/report/${report.id}'" onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,255,255,0.05)'">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                                        ${App.getSeverityBadge(report.severity)}
+                                        <span style="font-size: 0.8rem; color: var(--text-muted);">
+                                            <i class="fa-regular fa-clock"></i> Posted: ${fullDate}
+                                        </span>
+                                    </div>
+                                    <h4 style="margin-bottom: 10px; font-size: 1.1rem;">${report.title}</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${report.description}</p>
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                        <span style="color: var(--primary-color);"><i class="fa-solid fa-tag"></i> ${report.category?.name || 'Unknown'}</span>
+                                        <span style="color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> ${report.address ? report.address.split(',')[0] : 'Location unknown'}</span>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        container.innerHTML = html;
+                    } else {
+                        container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">No recent reports found.</div>`;
+                    }
+                }).catch(e => console.log(e));
+                
+            fetch('/api/alerts')
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById('stat-alerts').innerText = data.alerts ? data.alerts.length : 0;
+                    document.getElementById('stat-resolution').innerText = "85%";
+                }).catch(e => console.log(e));
+
+        } catch (error) {
+            console.error('Error loading landing page data:', error);
+        }
+    });
+</script>
+{% endblock %}

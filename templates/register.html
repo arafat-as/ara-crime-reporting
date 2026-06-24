@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container auth-container" style="max-width: 550px;">
+    <div class="glass-panel auth-card">
+        <div class="auth-header">
+            <i class="fa-solid fa-user-plus"></i>
+            <h2>Create Account</h2>
+            <p style="color: var(--text-muted);">Join the community to report and track incidents</p>
+        </div>
+        
+        <div id="register-error" class="alert-box" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--color-critical); padding: 10px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem;"></div>
+        
+        <form id="register-form">
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" name="full_name" class="form-control" required placeholder="John Doe">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" required placeholder="johndoe">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="text" name="phone" class="form-control" placeholder="080...">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" required placeholder="john@example.com">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required placeholder="Min 6 chars">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="confirm_password" class="form-control" required placeholder="Retype password">
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 30px;">
+                <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
+                    <input type="checkbox" required style="margin-top: 4px;">
+                    <span>I agree to the Terms of Service and Privacy Policy. I understand that submitting false crime reports is a punishable offense.</span>
+                </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1.1rem;">Create Account</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 25px; color: var(--text-muted); font-size: 0.95rem;">
+            Already have an account? <a href="/login">Login here</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (App.state.token) {
+            window.location.href = '/dashboard';
+        }
+    });
+</script>
+{% endblock %}

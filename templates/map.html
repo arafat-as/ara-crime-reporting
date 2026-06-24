@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Live Crime Map{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2><i class="fa-solid fa-map-location-dot"></i> Live Crime Map</h2>
+        <a href="/report/new" class="btn btn-primary"><i class="fa-solid fa-bullhorn"></i> Report a Crime</a>
+    </div>
+
+    <div class="glass-panel map-card">
+        <div class="map-header">
+            <h3><i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Incident Locations</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">Recent incidents reported in the last 30 days.</p>
+        </div>
+        <div id="map" style="height: 600px;"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const crimeMap = new CrimeMap('map');
+        
+        try {
+            const mapRes = await fetch('/api/reports/map');
+            const mapData = await mapRes.json();
+            crimeMap.loadMarkers(mapData.reports);
+        } catch (error) {
+            console.error('Error loading map data:', error);
+            App.showToast('Error', 'Failed to load map data.', 'error');
+        }
+    });
+</script>
+{% endblock %}

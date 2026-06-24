@@ -1,0 +1,32 @@
+2026-04-20 03:19:25,463 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:19:26,497 - werkzeug - WARNING -  * Debugger is active!
+2026-04-20 03:19:26,530 - werkzeug - INFO -  * Debugger PIN: 129-103-848
+2026-04-20 03:20:06,451 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:20:07,432 - werkzeug - WARNING -  * Debugger is active!
+2026-04-20 03:20:07,460 - werkzeug - INFO -  * Debugger PIN: 129-103-848
+2026-04-20 03:23:18,380 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:23:19,464 - werkzeug - WARNING -  * Debugger is active!
+2026-04-20 03:23:19,497 - werkzeug - INFO -  * Debugger PIN: 129-103-848
+2026-04-20 03:25:05,479 - CrimeReportingSystem - INFO - New user registered: jd
+2026-04-20 03:32:08,574 - werkzeug - INFO -  * Detected change in '/Users/aniebietpius/Desktop/ara/app.py', reloading
+2026-04-20 03:32:08,660 - werkzeug - INFO -  * Detected change in '/Users/aniebietpius/Desktop/ara/app.py', reloading
+2026-04-20 03:32:09,539 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:32:09,806 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:32:13,759 - werkzeug - WARNING -  * Debugger is active!
+2026-04-20 03:32:13,772 - werkzeug - WARNING -  * Debugger is active!
+2026-04-20 03:32:13,790 - werkzeug - INFO -  * Debugger PIN: 129-103-848
+2026-04-20 03:32:13,805 - werkzeug - INFO -  * Debugger PIN: 129-103-848
+2026-04-20 03:36:05,388 - werkzeug - INFO -  * Detected change in '/Users/aniebietpius/Desktop/ara/models.py', reloading
+2026-04-20 03:36:05,390 - werkzeug - INFO -  * Detected change in '/Users/aniebietpius/Desktop/ara/models.py', reloading
+2026-04-20 03:36:05,916 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:36:05,927 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:36:07,606 - werkzeug - WARNING -  * Debugger is active!
+2026-04-20 03:36:07,647 - werkzeug - INFO -  * Debugger PIN: 129-103-848
+2026-04-20 03:36:40,860 - werkzeug - INFO -  * Detected change in '/Users/aniebietpius/Desktop/ara/routes/reports.py', reloading
+2026-04-20 03:36:41,149 - werkzeug - INFO -  * Restarting with stat
+2026-04-20 03:36:42,604 - werkzeug - WARNING -  * Debugger is active!
+2026-04-20 03:36:42,629 - werkzeug - INFO -  * Debugger PIN: 129-103-848
+2026-06-23 22:48:10,778 - werkzeug - INFO -  * Restarting with stat
+2026-06-23 22:48:12,171 - werkzeug - WARNING -  * Debugger is active!
+2026-06-23 22:48:12,174 - werkzeug - INFO -  * Debugger PIN: 248-544-083
+2026-06-23 22:50:23,570 - CrimeReportingSystem - INFO - New user registered: arafats

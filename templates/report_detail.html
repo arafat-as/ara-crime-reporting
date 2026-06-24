@@ -1,0 +1,315 @@
+{% extends 'base.html' %}
+
+{% block title %}Report Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <a href="javascript:history.back()" class="btn btn-outline" style="padding: 8px 15px;"><i class="fa-solid fa-arrow-left"></i> Back</a>
+        <div id="action-buttons" style="display: none; gap: 10px;">
+            <!-- Actions for officers/admins injected here -->
+        </div>
+    </div>
+    
+    <div id="loading-spinner" style="text-align: center; padding: 50px;">
+        <i class="fa-solid fa-spinner fa-spin fa-3x" style="color: var(--primary-color);"></i>
+        <p style="margin-top: 15px; color: var(--text-muted);">Loading report details...</p>
+    </div>
+    
+    <div id="report-content" style="display: none;">
+        <div class="glass-panel" style="padding: 30px; margin-bottom: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;">
+                <div>
+                    <h2 id="report-title" style="margin-bottom: 10px;">--</h2>
+                    <div style="display: flex; gap: 15px; color: var(--text-muted); font-size: 0.9rem;">
+                        <span id="report-date"><i class="fa-regular fa-clock"></i> --</span>
+                        <span id="report-id-display"><i class="fa-solid fa-hashtag"></i> --</span>
+                        <span id="report-category"><i class="fa-solid fa-tag"></i> --</span>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+                    <div id="report-status-badge"></div>
+                    <div id="report-severity-badge"></div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+                <div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 10px;">Description</h4>
+                    <p id="report-desc" style="white-space: pre-wrap; margin-bottom: 30px; line-height: 1.8;"></p>
+                    
+                    <div id="evidence-section" style="display: none;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px;">Evidence Image</h4>
+                        <img id="report-image" src="" alt="Evidence" style="max-width: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                    </div>
+                </div>
+                
+                <div>
+                    <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1rem;"><i class="fa-solid fa-user"></i> Reporter Info</h4>
+                        <div id="reporter-info">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 8px;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1rem;"><i class="fa-solid fa-location-dot"></i> Location</h4>
+                        <p id="report-address" style="margin-bottom: 15px; font-size: 0.9rem; color: var(--text-muted);">--</p>
+                        <div id="mini-map" style="height: 200px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comments Section -->
+            <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px;">
+                <h4 style="color: var(--primary-color); margin-bottom: 20px;"><i class="fa-solid fa-comments"></i> Updates & Comments</h4>
+                
+                <div id="comments-list" style="margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px;">
+                    <!-- Comments injected here -->
+                </div>
+                
+                <div id="comment-form-container" style="display: none; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 8px;">
+                    <form id="comment-form">
+                        <div class="form-group">
+                            <textarea id="comment-content" class="form-control" rows="3" required placeholder="Add an update or comment..."></textarea>
+                        </div>
+                        <div style="text-align: right;">
+                            <button type="submit" class="btn btn-primary">Post Comment</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="login-prompt" style="display: none; text-align: center; padding: 20px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                    <p style="color: var(--text-muted); margin-bottom: 10px;">Please login to leave a comment.</p>
+                    <a href="/login" class="btn btn-outline" style="padding: 6px 15px;">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Status Update Modal (Officers/Admins) -->
+<div class="modal-overlay" id="status-modal">
+    <div class="modal-content glass-panel">
+        <div class="modal-header">
+            <h3>Update Report Status</h3>
+            <button class="modal-close" onclick="closeModal('status-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="status-form">
+                <div class="form-group">
+                    <label class="form-label">New Status</label>
+                    <select id="new-status" class="form-control">
+                        <option value="pending">Pending</option>
+                        <option value="investigating">Investigating</option>
+                        <option value="resolved">Resolved</option>
+                        <option value="dismissed">Dismissed</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Save Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script>
+    let currentReportId = null;
+    let miniMap = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!Auth.requireAuth()) return;
+        
+        // Extract ID from URL (e.g. /report/12)
+        const pathParts = window.location.pathname.split('/');
+        currentReportId = pathParts[pathParts.length - 1];
+        
+        fetchReportDetails();
+        
+        // Comment logic
+        if (App.state.user) {
+            document.getElementById('comment-form-container').style.display = 'block';
+            document.getElementById('comment-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const content = document.getElementById('comment-content').value;
+                const btn = e.target.querySelector('button');
+                btn.disabled = true;
+                
+                try {
+                    await App.api(`/reports/${currentReportId}/comments`, {
+                        method: 'POST',
+                        body: JSON.stringify({ content })
+                    });
+                    document.getElementById('comment-content').value = '';
+                    fetchReportDetails(); // reload to show new comment
+                } catch (err) {
+                    App.showToast('Error', err.message, 'error');
+                } finally {
+                    btn.disabled = false;
+                }
+            });
+        } else {
+            document.getElementById('login-prompt').style.display = 'block';
+        }
+        
+        // Modal logic
+        document.getElementById('status-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const newStatus = document.getElementById('new-status').value;
+            try {
+                await App.api(`/reports/${currentReportId}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({ status: newStatus })
+                });
+                App.showToast('Status Updated', 'Report status successfully changed.', 'success');
+                closeModal('status-modal');
+                fetchReportDetails();
+            } catch (err) {
+                App.showToast('Error', err.message, 'error');
+            }
+        });
+    });
+    
+    async function fetchReportDetails() {
+        try {
+            const data = await App.api(`/reports/${currentReportId}`);
+            const r = data.report;
+            
+            document.getElementById('loading-spinner').style.display = 'none';
+            document.getElementById('report-content').style.display = 'block';
+            
+            // Populate data
+            document.getElementById('report-title').innerText = r.title;
+            document.getElementById('report-id-display').innerHTML = `<i class="fa-solid fa-hashtag"></i> ${r.id}`;
+            document.getElementById('report-date').innerHTML = `<i class="fa-regular fa-clock"></i> ${App.formatDate(r.created_at)}`;
+            document.getElementById('report-category').innerHTML = `<i class="fa-solid fa-tag"></i> ${r.category?.name || 'Unknown'}`;
+            document.getElementById('report-status-badge').innerHTML = App.getStatusBadge(r.status);
+            document.getElementById('report-severity-badge').innerHTML = App.getSeverityBadge(r.severity);
+            
+            document.getElementById('report-desc').innerText = r.description;
+            
+            if (r.image_url) {
+                document.getElementById('report-image').src = r.image_url;
+                document.getElementById('evidence-section').style.display = 'block';
+            }
+            
+            // Reporter Info
+            const reporterDiv = document.getElementById('reporter-info');
+            if (r.is_anonymous) {
+                reporterDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #333; display: flex; align-items: center; justify-content: center;">
+                            <i class="fa-solid fa-user-secret" style="color: #888;"></i>
+                        </div>
+                        <div>
+                            <p style="margin: 0; font-weight: 600;">Anonymous Citizen</p>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">Identity protected</p>
+                        </div>
+                    </div>
+                `;
+            } else if (r.reporter) {
+                reporterDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: ${r.reporter.avatar_color}; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                            ${r.reporter.username.charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                            <p style="margin: 0; font-weight: 600;">${r.reporter.full_name}</p>
+                            <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">@${r.reporter.username}</p>
+                            ${r.reporter.phone ? `<p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-phone"></i> ${r.reporter.phone}</p>` : ''}
+                        </div>
+                    </div>
+                `;
+            } else {
+                reporterDiv.innerHTML = '<p style="color: var(--text-muted);">Information unavailable</p>';
+            }
+            
+            // Location Map
+            document.getElementById('report-address').innerText = r.address || 'Coordinates only';
+            if (r.latitude && r.longitude) {
+                if (!miniMap) {
+                    miniMap = new CrimeMap('mini-map', { interactive: false });
+                }
+                miniMap.loadMarkers([{ ...r }]);
+                miniMap.map.setView([r.latitude, r.longitude], 15);
+            }
+            
+            // Action Buttons for Officers/Admins
+            if (App.state.user && ['officer', 'admin'].includes(App.state.user.role)) {
+                const actionContainer = document.getElementById('action-buttons');
+                actionContainer.style.display = 'flex';
+                
+                let html = `
+                    <button class="btn btn-primary" onclick="openModal('status-modal')">
+                        <i class="fa-solid fa-pen-to-square"></i> Update Status
+                    </button>
+                `;
+                
+                if (App.state.user.role === 'admin') {
+                    html += `
+                        <button class="btn btn-danger" onclick="deleteReport(${r.id})">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </button>
+                    `;
+                }
+                
+                actionContainer.innerHTML = html;
+                document.getElementById('new-status').value = r.status;
+            }
+            
+            // Render Comments
+            const commentsContainer = document.getElementById('comments-list');
+            if (r.comments && r.comments.length > 0) {
+                let html = '';
+                r.comments.forEach(c => {
+                    const isOfficer = ['officer', 'admin'].includes(c.user?.role);
+                    const borderStyle = isOfficer ? 'border-left: 3px solid var(--primary-color);' : 'border-left: 3px solid rgba(255,255,255,0.1);';
+                    html += `
+                        <div style="background: rgba(0,0,0,0.15); padding: 15px; border-radius: 6px; ${borderStyle}">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                <div style="width: 25px; height: 25px; border-radius: 50%; background: ${c.user?.avatar_color || '#555'}; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: bold;">
+                                    ${c.user ? c.user.username.charAt(0).toUpperCase() : '?'}
+                                </div>
+                                <span style="font-weight: 600; font-size: 0.9rem;">${c.user ? c.user.full_name : 'Unknown User'}</span>
+                                ${isOfficer ? '<span class="badge" style="background: rgba(0,212,255,0.1); color: var(--primary-color); font-size: 0.6rem; padding: 2px 6px;">Law Enforcement</span>' : ''}
+                                <span style="color: var(--text-muted); font-size: 0.8rem; margin-left: auto;">${App.formatDate(c.created_at)}</span>
+                            </div>
+                            <p style="margin: 0; font-size: 0.95rem; white-space: pre-wrap;">${c.content}</p>
+                        </div>
+                    `;
+                });
+                commentsContainer.innerHTML = html;
+            } else {
+                commentsContainer.innerHTML = '<p style="color: var(--text-muted); font-style: italic;">No comments yet.</p>';
+            }
+            
+        } catch (error) {
+            document.getElementById('loading-spinner').innerHTML = `
+                <i class="fa-solid fa-triangle-exclamation fa-3x" style="color: var(--color-critical);"></i>
+                <p style="margin-top: 15px; color: var(--color-critical);">${error.message}</p>
+                <a href="/dashboard" class="btn btn-outline" style="margin-top: 15px;">Return to Dashboard</a>
+            `;
+        }
+    }
+    
+    async function deleteReport(id) {
+        if (!confirm('Are you sure you want to delete this report? This action cannot be undone.')) return;
+        try {
+            await App.api(`/reports/${id}`, { method: 'DELETE' });
+            App.showToast('Deleted', 'Report deleted successfully', 'success');
+            setTimeout(() => window.location.href = '/admin', 1500);
+        } catch (e) {
+            App.showToast('Error', e.message, 'error');
+        }
+    }
+    
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+    }
+    
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+</script>
+{% endblock %}

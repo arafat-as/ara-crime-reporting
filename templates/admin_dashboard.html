@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h2><i class="fa-solid fa-database"></i> System Administration</h2>
+    </div>
+    
+    <!-- Stats Row 1 -->
+    <div class="dashboard-grid">
+        <div class="glass-panel stat-card">
+            <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-content">
+                <h3 id="admin-total-users">0</h3>
+                <p>Total Users</p>
+            </div>
+        </div>
+        <div class="glass-panel stat-card">
+            <div class="stat-icon" style="color: var(--primary-color); background: rgba(0, 212, 255, 0.1);"><i class="fa-solid fa-file-shield"></i></div>
+            <div class="stat-content">
+                <h3 id="admin-total-reports">0</h3>
+                <p>Total Reports</p>
+            </div>
+        </div>
+        <div class="glass-panel stat-card">
+            <div class="stat-icon" style="color: var(--status-resolved); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-chart-line"></i></div>
+            <div class="stat-content">
+                <h3 id="admin-resolution-rate">0%</h3>
+                <p>Resolution Rate</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Charts Row -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px;">
+        <div class="glass-panel" style="padding: 20px;">
+            <h4 style="margin-bottom: 15px; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Reports by Category</h4>
+            <div style="height: 300px; position: relative;">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+        <div class="glass-panel" style="padding: 20px;">
+            <h4 style="margin-bottom: 15px; color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Reports by Severity</h4>
+            <div style="height: 300px; position: relative;">
+                <canvas id="severityChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <!-- User Management Table -->
+    <div class="glass-panel" style="padding: 25px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">
+            <h3 style="margin: 0;">User Management</h3>
+            <input type="text" id="user-search" class="form-control" placeholder="Search users..." style="padding: 8px 15px; width: 250px;">
+        </div>
+        
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="users-body">
+                    <tr><td colspan="5" style="text-align: center; padding: 30px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Role Change Modal -->
+<div class="modal-overlay" id="role-modal">
+    <div class="modal-content glass-panel" style="max-width: 400px;">
+        <div class="modal-header">
+            <h3>Change User Role</h3>
+            <button class="modal-close" onclick="closeModal('role-modal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p id="role-user-name" style="margin-bottom: 15px; font-weight: bold;"></p>
+            <form id="role-form">
+                <input type="hidden" id="role-user-id">
+                <div class="form-group">
+                    <select id="new-role" class="form-control">
+                        <option value="citizen">Citizen</option>
+                        <option value="officer">Officer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

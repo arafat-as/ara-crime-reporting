@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CrimeAlert NG{% endblock %} - Real-time Reporting System</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="A real-time web-based crime reporting and alert system designed for efficient communication between citizens and law enforcement.">
+    <meta name="keywords" content="crime reporting, alerts, law enforcement, safety, real-time">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="nav-brand">
+                <i class="fa-solid fa-shield-halved"></i> CrimeAlert NG
+            </a>
+            
+            <div class="nav-menu" id="nav-menu">
+                <!-- Dynamically populated by JS based on role -->
+            </div>
+            
+            <div class="nav-auth-buttons" id="nav-auth">
+                <!-- Dynamically populated by JS based on auth state -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Alert Ticker (Hidden by default, shown if active alerts exist) -->
+    <div id="global-alert-ticker" class="alert-ticker" style="display: none;">
+        <div class="ticker-content" id="ticker-content">
+            <!-- Alert items injected here -->
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CrimeAlert NG. Designed for Web-Based Crime Reporting and Alerting.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container"></div>
+
+    <!-- Core Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Application Logic -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/alerts.js') }}"></script>
+    
+    {% block extra_js %}{% endblock %}
+    
+    <script>
+        // Initialize Core App when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            App.init();
+            Auth.init();
+            Alerts.init();
+        });
+    </script>
+</body>
+</html>
