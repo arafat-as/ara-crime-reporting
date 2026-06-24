@@ -12,7 +12,7 @@ from models import db, bcrypt
 
 migrate = Migrate()
 jwt = JWTManager()
-socketio = SocketIO(cors_allowed_origins="*", async_mode='eventlet')
+socketio = SocketIO(cors_allowed_origins="*", async_mode='threading')
 
 
 def create_app(config_name='default'):
