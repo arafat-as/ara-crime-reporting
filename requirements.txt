@@ -7,7 +7,7 @@ Flask-SocketIO
 Flask-CORS
 SQLAlchemy
 geopy
-eventlet
+eventlet==0.39.1
 Werkzeug
 python-dotenv
 psycopg2-binary
