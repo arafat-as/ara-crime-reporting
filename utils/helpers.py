@@ -9,14 +9,19 @@ from flask import request
 from werkzeug.utils import secure_filename
 from models import db, ActivityLog
 
-# Configure logging
+# Configure logging.
+# On Render (and most cloud hosts) local disk is wiped on every restart/redeploy,
+# so writing only to a file means logs are lost constantly. We always log to
+# stdout (which Render captures permanently in its own Logs dashboard), and
+# additionally log to a local file only when running locally for convenience.
+_handlers = [logging.StreamHandler()]
+if os.environ.get('FLASK_CONFIG') != 'production':
+    _handlers.append(logging.FileHandler('crime_system.log'))
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('crime_system.log'),
-        logging.StreamHandler()
-    ]
+    handlers=_handlers
 )
 logger = logging.getLogger('CrimeReportingSystem')
 

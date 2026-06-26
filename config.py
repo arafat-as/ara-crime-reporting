@@ -10,10 +10,18 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     """Base configuration class."""
     SECRET_KEY = os.environ.get('SECRET_KEY', 'crime-reporting-secret-key-2026')
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
+
+    # Render (and some other hosts) provide DATABASE_URL starting with
+    # "postgres://", but SQLAlchemy 2.x only accepts "postgresql://".
+    # Normalize it here so deployment doesn't silently break on that mismatch.
+    _db_url = os.environ.get(
         'DATABASE_URL',
         'sqlite:///' + os.path.join(basedir, 'crime_reports.db')
     )
+    if _db_url.startswith('postgres://'):
+        _db_url = _db_url.replace('postgres://', 'postgresql://', 1)
+    SQLALCHEMY_DATABASE_URI = _db_url
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-key-crime-2026')
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
