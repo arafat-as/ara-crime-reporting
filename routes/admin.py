@@ -46,6 +46,72 @@ def run_migration():
         return jsonify({'error': str(e)}), 500
 
 
+@admin_bp.route('/api/admin/run-seed', methods=['POST'])
+def run_seed():
+    """
+    One-time, idempotent demo-data seeder for production, used because the
+    free Render tier has no shell access to run seed.py directly. Creates
+    the standard demo accounts (and categories/citizens with coordinates
+    for geofencing demos) only if they don't already exist.
+
+    Protected by the same secret-key pattern as run_migration, for the
+    same reason — this needs to work even if login is currently broken.
+
+    NOTE: this route is intentionally temporary — remove it once production
+    has been confirmed seeded.
+    """
+    provided_key = request.headers.get('X-Migration-Key', '')
+    expected_key = os.environ.get('SECRET_KEY', '')
+    if not expected_key or provided_key != expected_key:
+        return jsonify({'error': 'Unauthorized'}), 401
+
+    try:
+        created = []
+
+        categories_data = [
+            ('Robbery', '🔫', 'Theft using force or threat of force'),
+            ('Assault', '👊', 'Physical attack on a person'),
+            ('Burglary', '🏠', 'Unlawful entry into a building to commit theft'),
+            ('Fraud', '💳', 'Deception for financial or personal gain'),
+            ('Vandalism', '🔨', 'Deliberate destruction of property'),
+            ('Kidnapping', '🚨', 'Unlawful abduction of a person'),
+            ('Drug Offense', '💊', 'Illegal possession, use, or sale of drugs'),
+            ('Domestic Violence', '🏚️', 'Violence within a household'),
+            ('Cybercrime', '💻', 'Crimes committed using computers or the internet'),
+            ('Public Disturbance', '📢', 'Disorderly conduct in public'),
+            ('Traffic Violation', '🚗', 'Violation of traffic laws'),
+            ('Other', '⚠️', 'Other crimes not listed above'),
+        ]
+        for name, icon, desc in categories_data:
+            if not CrimeCategory.query.filter_by(name=name).first():
+                db.session.add(CrimeCategory(name=name, icon=icon, description=desc))
+                created.append(f'category:{name}')
+
+        demo_users = [
+            ('admin', 'admin@crimealert.ng', 'Admin@123', 'System Administrator', 'admin', '08012345670', None, None),
+            ('officer_john', 'john.officer@police.ng', 'Officer@123', 'John Adeyemi', 'officer', '08012345671', None, None),
+            ('citizen_mike', 'mike@gmail.com', 'Citizen@123', 'Michael Eze', 'citizen', '08012345673', 6.6018, 3.3515),
+            ('citizen_ada', 'ada@gmail.com', 'Citizen@123', 'Adaeze Nwosu', 'citizen', '08012345674', 6.4474, 3.4737),
+        ]
+        for uname, email, pw, full_name, role, phone, lat, lng in demo_users:
+            if not User.query.filter_by(username=uname).first():
+                user = User(
+                    username=uname, email=email, full_name=full_name,
+                    phone=phone, role=role, latitude=lat, longitude=lng,
+                )
+                user.set_password(pw)
+                db.session.add(user)
+                created.append(f'user:{uname}')
+
+        db.session.commit()
+        logger.info(f"Seed run: created {len(created)} new records.")
+        return jsonify({'message': 'Seed applied successfully.', 'created': created}), 200
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Seed failed: {str(e)}")
+        return jsonify({'error': str(e)}), 500
+
+
 @admin_bp.route('/api/admin/stats', methods=['GET'])
 @role_required('officer', 'admin')
 def get_stats():
