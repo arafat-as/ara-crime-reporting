@@ -30,3 +30,403 @@
 2026-06-23 22:48:12,171 - werkzeug - WARNING -  * Debugger is active!
 2026-06-23 22:48:12,174 - werkzeug - INFO -  * Debugger PIN: 248-544-083
 2026-06-23 22:50:23,570 - CrimeReportingSystem - INFO - New user registered: arafats
+2026-06-26 10:17:17,754 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 10:17:17,756 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 10:17:17,756 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 10:17:18,955 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 10:17:18,960 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 10:20:32,691 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:32] "GET / HTTP/1.1" 200 -
+2026-06-26 10:20:32,836 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 10:20:32,921 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:32] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 10:20:33,108 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 10:20:33,109 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 10:20:33,535 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-06-26 10:20:33,536 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "GET /socket.io/?EIO=4&transport=polling&t=Py3EnjV HTTP/1.1" 200 -
+2026-06-26 10:20:33,566 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 10:20:33,596 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "GET /api/reports?per_page=5 HTTP/1.1" 200 -
+2026-06-26 10:20:33,693 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "POST /socket.io/?EIO=4&transport=polling&t=Py3EnqU&sid=bLV2UPn8Nt9U3LfAAAAA HTTP/1.1" 200 -
+2026-06-26 10:20:33,876 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "GET /socket.io/?EIO=4&transport=polling&t=Py3Enqc&sid=bLV2UPn8Nt9U3LfAAAAA HTTP/1.1" 200 -
+2026-06-26 10:20:33,879 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 10:20:33,899 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:33] "GET /socket.io/?EIO=4&transport=polling&t=Py3Enve&sid=bLV2UPn8Nt9U3LfAAAAA HTTP/1.1" 200 -
+2026-06-26 10:20:34,258 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:20:34] "GET /socket.io/?EIO=4&transport=polling&t=Py3EnwS&sid=bLV2UPn8Nt9U3LfAAAAA HTTP/1.1" 200 -
+2026-06-26 10:21:03,094 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "GET /report/new HTTP/1.1" 200 -
+2026-06-26 10:21:03,144 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "GET /socket.io/?EIO=4&transport=websocket&sid=bLV2UPn8Nt9U3LfAAAAA HTTP/1.1" 200 -
+2026-06-26 10:21:03,373 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 10:21:03,468 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 10:21:03,469 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 10:21:03,470 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 10:21:03,496 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "[36mGET /static/js/reports.js HTTP/1.1[0m" 304 -
+2026-06-26 10:21:03,499 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "[36mGET /static/js/map.js HTTP/1.1[0m" 304 -
+2026-06-26 10:21:03,834 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "GET /api/categories HTTP/1.1" 200 -
+2026-06-26 10:21:03,844 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "GET /socket.io/?EIO=4&transport=polling&t=Py3Ev8b HTTP/1.1" 200 -
+2026-06-26 10:21:03,853 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:03] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 10:21:04,081 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:04] "POST /socket.io/?EIO=4&transport=polling&t=Py3EvDq&sid=7_Py-ROWJgVC6U2DAAAC HTTP/1.1" 200 -
+2026-06-26 10:21:04,170 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:04] "GET /socket.io/?EIO=4&transport=polling&t=Py3EvDu&sid=7_Py-ROWJgVC6U2DAAAC HTTP/1.1" 200 -
+2026-06-26 10:21:04,178 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:21:04] "GET /socket.io/?EIO=4&transport=polling&t=Py3EvIl&sid=7_Py-ROWJgVC6U2DAAAC HTTP/1.1" 200 -
+2026-06-26 10:22:29,045 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:22:29] "[31m[1mPOST /api/reports HTTP/1.1[0m" 422 -
+2026-06-26 10:22:44,566 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 10:22:44] "[31m[1mPOST /api/reports HTTP/1.1[0m" 422 -
+2026-06-26 11:13:56,884 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 11:13:56,888 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 11:13:56,889 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 11:13:58,148 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 11:13:58,153 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 11:15:58,267 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 11:15:58,272 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 11:15:58,274 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 11:15:59,227 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 11:15:59,230 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 11:17:33,007 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 11:17:33,010 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 11:17:33,012 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 11:17:33,988 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 11:17:33,990 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 11:18:24,493 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:24] "GET / HTTP/1.1" 200 -
+2026-06-26 11:18:24,636 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:24] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-06-26 11:18:24,670 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:24] "GET /static/js/app.js HTTP/1.1" 200 -
+2026-06-26 11:18:24,836 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:24] "GET /static/js/alerts.js HTTP/1.1" 200 -
+2026-06-26 11:18:24,836 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:24] "GET /static/js/auth.js HTTP/1.1" 200 -
+2026-06-26 11:18:25,293 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "GET /socket.io/?EIO=4&transport=polling&t=Py3S1JN HTTP/1.1" 200 -
+2026-06-26 11:18:25,301 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-06-26 11:18:25,329 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:18:25,356 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "GET /api/reports?per_page=5 HTTP/1.1" 200 -
+2026-06-26 11:18:25,421 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "POST /socket.io/?EIO=4&transport=polling&t=Py3S1Ql&sid=CtOTSOhkIMcEI6zTAAAA HTTP/1.1" 200 -
+2026-06-26 11:18:25,650 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "GET /socket.io/?EIO=4&transport=polling&t=Py3S1Qo&sid=CtOTSOhkIMcEI6zTAAAA HTTP/1.1" 200 -
+2026-06-26 11:18:25,674 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:18:25,680 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:25] "GET /socket.io/?EIO=4&transport=polling&t=Py3S1WB&sid=CtOTSOhkIMcEI6zTAAAA HTTP/1.1" 200 -
+2026-06-26 11:18:31,379 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:31] "GET /login HTTP/1.1" 200 -
+2026-06-26 11:18:31,403 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:18:31,404 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:31] "GET /socket.io/?EIO=4&transport=websocket&sid=CtOTSOhkIMcEI6zTAAAA HTTP/1.1" 200 -
+2026-06-26 11:18:31,570 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:31] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:18:31,722 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:31] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:18:31,725 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:31] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:18:32,056 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:32] "GET /socket.io/?EIO=4&transport=polling&t=Py3S2-x HTTP/1.1" 200 -
+2026-06-26 11:18:32,065 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:32] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:18:32,318 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:32] "POST /socket.io/?EIO=4&transport=polling&t=Py3S347&sid=rTnA4XPcQQA1aQcAAAAC HTTP/1.1" 200 -
+2026-06-26 11:18:32,400 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:32] "GET /socket.io/?EIO=4&transport=polling&t=Py3S34A&sid=rTnA4XPcQQA1aQcAAAAC HTTP/1.1" 200 -
+2026-06-26 11:18:32,420 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:18:32] "GET /socket.io/?EIO=4&transport=polling&t=Py3S39Q&sid=rTnA4XPcQQA1aQcAAAAC HTTP/1.1" 200 -
+2026-06-26 11:19:08,246 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "GET /login HTTP/1.1" 200 -
+2026-06-26 11:19:08,264 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "GET /socket.io/?EIO=4&transport=websocket&sid=rTnA4XPcQQA1aQcAAAAC HTTP/1.1" 200 -
+2026-06-26 11:19:08,469 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:19:08,495 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:19:08,595 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:19:08,596 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:19:08,620 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:19:08,929 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:08] "GET /socket.io/?EIO=4&transport=polling&t=Py3SB-_ HTTP/1.1" 200 -
+2026-06-26 11:19:09,249 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:09] "POST /socket.io/?EIO=4&transport=polling&t=Py3SC47&sid=XeoMG8kxCDeyTc6yAAAE HTTP/1.1" 200 -
+2026-06-26 11:19:09,261 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:09] "GET /socket.io/?EIO=4&transport=polling&t=Py3SC4A&sid=XeoMG8kxCDeyTc6yAAAE HTTP/1.1" 200 -
+2026-06-26 11:19:24,190 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:24] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2026-06-26 11:19:39,826 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:39] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+2026-06-26 11:19:44,532 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:44] "GET /register HTTP/1.1" 200 -
+2026-06-26 11:19:44,564 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:44] "GET /socket.io/?EIO=4&transport=websocket&sid=XeoMG8kxCDeyTc6yAAAE HTTP/1.1" 200 -
+2026-06-26 11:19:44,794 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:19:44,879 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:44] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:19:44,880 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:44] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:19:44,882 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:44] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:19:45,212 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:45] "GET /socket.io/?EIO=4&transport=polling&t=Py3SKrv HTTP/1.1" 200 -
+2026-06-26 11:19:45,216 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:45] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:19:45,475 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:45] "POST /socket.io/?EIO=4&transport=polling&t=Py3SKx7&sid=4Qt3ogPa8nB29UEmAAAG HTTP/1.1" 200 -
+2026-06-26 11:19:45,543 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:45] "GET /socket.io/?EIO=4&transport=polling&t=Py3SKxA&sid=4Qt3ogPa8nB29UEmAAAG HTTP/1.1" 200 -
+2026-06-26 11:19:45,560 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:19:45] "GET /socket.io/?EIO=4&transport=polling&t=Py3SL0H&sid=4Qt3ogPa8nB29UEmAAAG HTTP/1.1" 200 -
+2026-06-26 11:20:20,628 - CrimeReportingSystem - INFO - New user registered: Admin
+2026-06-26 11:20:20,629 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:20] "[35m[1mPOST /api/auth/register HTTP/1.1[0m" 201 -
+2026-06-26 11:20:21,767 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:21] "GET /dashboard HTTP/1.1" 200 -
+2026-06-26 11:20:21,788 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:21] "GET /socket.io/?EIO=4&transport=websocket&sid=4Qt3ogPa8nB29UEmAAAG HTTP/1.1" 200 -
+2026-06-26 11:20:22,017 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:20:22,106 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:20:22,107 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:20:22,109 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:20:22,459 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:20:22,460 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "GET /socket.io/?EIO=4&transport=polling&t=Py3STxc HTTP/1.1" 200 -
+2026-06-26 11:20:22,485 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "GET /api/notifications HTTP/1.1" 200 -
+2026-06-26 11:20:22,489 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "GET /api/reports/my HTTP/1.1" 200 -
+2026-06-26 11:20:22,676 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "POST /socket.io/?EIO=4&transport=polling&t=Py3SU1R&sid=t0Np1VUL6Yc3XVaeAAAI HTTP/1.1" 200 -
+2026-06-26 11:20:22,801 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "GET /socket.io/?EIO=4&transport=polling&t=Py3SU1U&sid=t0Np1VUL6Yc3XVaeAAAI HTTP/1.1" 200 -
+2026-06-26 11:20:22,807 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:20:22] "GET /socket.io/?EIO=4&transport=polling&t=Py3SU6L&sid=t0Np1VUL6Yc3XVaeAAAI HTTP/1.1" 200 -
+2026-06-26 11:21:09,133 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "GET / HTTP/1.1" 200 -
+2026-06-26 11:21:09,167 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:21:09,168 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "GET /socket.io/?EIO=4&transport=websocket&sid=t0Np1VUL6Yc3XVaeAAAI HTTP/1.1" 200 -
+2026-06-26 11:21:09,386 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:21:09,490 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:21:09,493 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:21:09,847 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:21:09,847 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "GET /socket.io/?EIO=4&transport=polling&t=Py3SfW5 HTTP/1.1" 200 -
+2026-06-26 11:21:09,905 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:09] "GET /api/reports?per_page=5 HTTP/1.1" 200 -
+2026-06-26 11:21:10,085 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:10] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:21:10,161 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:10] "POST /socket.io/?EIO=4&transport=polling&t=Py3Sfbe&sid=u3OJgYJ4FDz3JKRdAAAK HTTP/1.1" 200 -
+2026-06-26 11:21:10,173 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:10] "GET /socket.io/?EIO=4&transport=polling&t=Py3Sfbi&sid=u3OJgYJ4FDz3JKRdAAAK HTTP/1.1" 200 -
+2026-06-26 11:21:10,181 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:21:10] "GET /socket.io/?EIO=4&transport=polling&t=Py3SfgY&sid=u3OJgYJ4FDz3JKRdAAAK HTTP/1.1" 200 -
+2026-06-26 11:22:13,599 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "GET /report/new HTTP/1.1" 200 -
+2026-06-26 11:22:13,626 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "GET /socket.io/?EIO=4&transport=websocket&sid=u3OJgYJ4FDz3JKRdAAAK HTTP/1.1" 200 -
+2026-06-26 11:22:13,768 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:22:13,944 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:22:13,944 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:22:13,946 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:22:13,948 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "GET /static/js/reports.js HTTP/1.1" 200 -
+2026-06-26 11:22:13,948 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:13] "GET /static/js/map.js HTTP/1.1" 200 -
+2026-06-26 11:22:14,274 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:14] "GET /api/categories HTTP/1.1" 200 -
+2026-06-26 11:22:14,303 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:14] "GET /socket.io/?EIO=4&transport=polling&t=Py3SvFT HTTP/1.1" 200 -
+2026-06-26 11:22:14,307 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:14] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:22:14,528 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:14] "POST /socket.io/?EIO=4&transport=polling&t=Py3SvKc&sid=P-YlcoI5Y2z-xt42AAAM HTTP/1.1" 200 -
+2026-06-26 11:22:14,626 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:14] "GET /socket.io/?EIO=4&transport=polling&t=Py3SvKe&sid=P-YlcoI5Y2z-xt42AAAM HTTP/1.1" 200 -
+2026-06-26 11:22:14,635 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:22:14] "GET /socket.io/?EIO=4&transport=polling&t=Py3SvPd&sid=P-YlcoI5Y2z-xt42AAAM HTTP/1.1" 200 -
+2026-06-26 11:35:53,411 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:35:53] "GET /socket.io/?EIO=4&transport=websocket&sid=P-YlcoI5Y2z-xt42AAAM HTTP/1.1" 200 -
+2026-06-26 11:36:36,399 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 11:36:36,400 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 11:36:36,401 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 11:36:38,348 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 11:36:38,352 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 11:38:14,183 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 11:38:14,185 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 11:38:14,187 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 11:38:15,947 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 11:38:15,951 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 11:39:20,657 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:20] "GET / HTTP/1.1" 200 -
+2026-06-26 11:39:20,712 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:39:20,911 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:20] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:39:21,032 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:39:21,034 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:39:21,385 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "GET /socket.io/?EIO=4&transport=polling&t=Py3Wp_X HTTP/1.1" 200 -
+2026-06-26 11:39:21,396 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:39:21,443 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "GET /api/reports?per_page=5 HTTP/1.1" 200 -
+2026-06-26 11:39:21,637 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:39:21,717 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "POST /socket.io/?EIO=4&transport=polling&t=Py3Wq56&sid=mV4TD4meywW7fXM1AAAO HTTP/1.1" 200 -
+2026-06-26 11:39:21,722 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "GET /socket.io/?EIO=4&transport=polling&t=Py3Wq5H&sid=mV4TD4meywW7fXM1AAAO HTTP/1.1" 200 -
+2026-06-26 11:39:21,738 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:39:21] "GET /socket.io/?EIO=4&transport=polling&t=Py3WqA4&sid=mV4TD4meywW7fXM1AAAO HTTP/1.1" 200 -
+2026-06-26 11:40:16,784 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:16] "GET /login HTTP/1.1" 200 -
+2026-06-26 11:40:16,829 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:16] "GET /socket.io/?EIO=4&transport=websocket&sid=mV4TD4meywW7fXM1AAAO HTTP/1.1" 200 -
+2026-06-26 11:40:17,097 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:40:17,146 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:17,146 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:17,149 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:17,497 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "GET /socket.io/?EIO=4&transport=polling&t=Py3X1iV HTTP/1.1" 200 -
+2026-06-26 11:40:17,500 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:40:17,762 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "POST /socket.io/?EIO=4&transport=polling&t=Py3X1nW&sid=Bck_aMOhGS9Xuo36AAAQ HTTP/1.1" 200 -
+2026-06-26 11:40:17,814 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "GET /socket.io/?EIO=4&transport=polling&t=Py3X1nX&sid=Bck_aMOhGS9Xuo36AAAQ HTTP/1.1" 200 -
+2026-06-26 11:40:17,835 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:17] "GET /socket.io/?EIO=4&transport=polling&t=Py3X1sZ&sid=Bck_aMOhGS9Xuo36AAAQ HTTP/1.1" 200 -
+2026-06-26 11:40:23,496 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:23] "GET /login HTTP/1.1" 200 -
+2026-06-26 11:40:23,520 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:23] "GET /socket.io/?EIO=4&transport=websocket&sid=Bck_aMOhGS9Xuo36AAAQ HTTP/1.1" 200 -
+2026-06-26 11:40:23,575 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:40:23,750 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:23] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:23,893 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:23] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:23,897 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:23] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:24,236 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:24] "GET /socket.io/?EIO=4&transport=polling&t=Py3X3Lc HTTP/1.1" 200 -
+2026-06-26 11:40:24,243 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:24] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:40:24,493 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:24] "POST /socket.io/?EIO=4&transport=polling&t=Py3X3Qu&sid=6dO6deCZ6Cgaol9mAAAS HTTP/1.1" 200 -
+2026-06-26 11:40:24,566 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:24] "GET /socket.io/?EIO=4&transport=polling&t=Py3X3Qx&sid=6dO6deCZ6Cgaol9mAAAS HTTP/1.1" 200 -
+2026-06-26 11:40:24,586 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:24] "GET /socket.io/?EIO=4&transport=polling&t=Py3X3W3&sid=6dO6deCZ6Cgaol9mAAAS HTTP/1.1" 200 -
+2026-06-26 11:40:28,299 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:28] "GET /register HTTP/1.1" 200 -
+2026-06-26 11:40:28,366 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:28] "GET /socket.io/?EIO=4&transport=websocket&sid=6dO6deCZ6Cgaol9mAAAS HTTP/1.1" 200 -
+2026-06-26 11:40:28,367 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:40:28,558 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:28] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:28,699 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:28] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:28,701 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:28] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:40:29,043 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:29] "GET /socket.io/?EIO=4&transport=polling&t=Py3X4Wi HTTP/1.1" 200 -
+2026-06-26 11:40:29,049 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:29] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:40:29,289 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:29] "POST /socket.io/?EIO=4&transport=polling&t=Py3X4b_&sid=HfDU-aA9o1yKYRCfAAAU HTTP/1.1" 200 -
+2026-06-26 11:40:29,371 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:29] "GET /socket.io/?EIO=4&transport=polling&t=Py3X4c3&sid=HfDU-aA9o1yKYRCfAAAU HTTP/1.1" 200 -
+2026-06-26 11:40:29,393 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:40:29] "GET /socket.io/?EIO=4&transport=polling&t=Py3X4h8&sid=HfDU-aA9o1yKYRCfAAAU HTTP/1.1" 200 -
+2026-06-26 11:41:25,686 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:25] "[31m[1mPOST /api/auth/register HTTP/1.1[0m" 409 -
+2026-06-26 11:41:45,845 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:45] "GET /login HTTP/1.1" 200 -
+2026-06-26 11:41:45,893 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:45] "GET /socket.io/?EIO=4&transport=websocket&sid=HfDU-aA9o1yKYRCfAAAU HTTP/1.1" 200 -
+2026-06-26 11:41:46,172 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:41:46,175 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:41:46,210 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:41:46,212 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:41:46,422 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:41:46,550 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "GET /socket.io/?EIO=4&transport=polling&t=Py3XNRz HTTP/1.1" 200 -
+2026-06-26 11:41:46,567 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "POST /socket.io/?EIO=4&transport=polling&t=Py3XNWz&sid=hu1cOQ-zXLzcHUfKAAAW HTTP/1.1" 200 -
+2026-06-26 11:41:46,882 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:41:46] "GET /socket.io/?EIO=4&transport=polling&t=Py3XNX0&sid=hu1cOQ-zXLzcHUfKAAAW HTTP/1.1" 200 -
+2026-06-26 11:42:02,116 - CrimeReportingSystem - INFO - User logged in: officer_john
+2026-06-26 11:42:02,120 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:02] "POST /api/auth/login HTTP/1.1" 200 -
+2026-06-26 11:42:03,287 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:03] "GET /officer HTTP/1.1" 200 -
+2026-06-26 11:42:03,330 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:03] "GET /socket.io/?EIO=4&transport=websocket&sid=hu1cOQ-zXLzcHUfKAAAW HTTP/1.1" 200 -
+2026-06-26 11:42:03,460 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 11:42:03,646 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:03] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 11:42:03,651 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:03] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 11:42:03,652 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:03] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 11:42:04,005 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "GET /socket.io/?EIO=4&transport=polling&t=Py3XRib HTTP/1.1" 200 -
+2026-06-26 11:42:04,013 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:42:04,105 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "GET /api/reports?per_page=50 HTTP/1.1" 200 -
+2026-06-26 11:42:04,247 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "POST /socket.io/?EIO=4&transport=polling&t=Py3XRnq&sid=TelRKU-3XmzcTxWsAAAY HTTP/1.1" 200 -
+2026-06-26 11:42:04,331 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "GET /socket.io/?EIO=4&transport=polling&t=Py3XRnv&sid=TelRKU-3XmzcTxWsAAAY HTTP/1.1" 200 -
+2026-06-26 11:42:04,400 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "GET /api/reports?status=pending HTTP/1.1" 200 -
+2026-06-26 11:42:04,433 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "GET /socket.io/?EIO=4&transport=polling&t=Py3XRst&sid=TelRKU-3XmzcTxWsAAAY HTTP/1.1" 200 -
+2026-06-26 11:42:04,506 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:42:04] "GET /api/reports?status=investigating HTTP/1.1" 200 -
+2026-06-26 11:43:13,695 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:43:13] "[35m[1mPOST /api/alerts HTTP/1.1[0m" 201 -
+2026-06-26 11:44:50,662 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:44:50] "GET /socket.io/?EIO=4&transport=websocket&sid=TelRKU-3XmzcTxWsAAAY HTTP/1.1" 200 -
+2026-06-26 11:44:59,675 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:44:59] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:44:59,678 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:44:59] "GET /socket.io/?EIO=4&transport=polling&t=Py3Y6gP HTTP/1.1" 200 -
+2026-06-26 11:45:00,069 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:00] "POST /socket.io/?EIO=4&transport=polling&t=Py3Y6hf&sid=wgNvN7nnQnKpmnlXAAAa HTTP/1.1" 200 -
+2026-06-26 11:45:00,071 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:00] "GET /socket.io/?EIO=4&transport=polling&t=Py3Y6hh&sid=wgNvN7nnQnKpmnlXAAAa HTTP/1.1" 200 -
+2026-06-26 11:45:00,151 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:00] "GET /api/reports?status=pending HTTP/1.1" 200 -
+2026-06-26 11:45:00,175 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:00] "GET /api/reports?status=investigating HTTP/1.1" 200 -
+2026-06-26 11:45:02,000 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:02] "GET /officer HTTP/1.1" 200 -
+2026-06-26 11:45:02,027 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:02] "GET /socket.io/?EIO=4&transport=websocket&sid=wgNvN7nnQnKpmnlXAAAa HTTP/1.1" 200 -
+2026-06-26 11:45:02,319 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:02] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-06-26 11:45:02,379 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:02] "GET /static/js/auth.js HTTP/1.1" 200 -
+2026-06-26 11:45:02,379 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:02] "GET /static/js/app.js HTTP/1.1" 200 -
+2026-06-26 11:45:02,384 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:02] "GET /static/js/alerts.js HTTP/1.1" 200 -
+2026-06-26 11:45:03,093 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "GET /socket.io/?EIO=4&transport=polling&t=Py3Y7Qa HTTP/1.1" 200 -
+2026-06-26 11:45:03,106 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 11:45:03,215 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "GET /api/reports?per_page=50 HTTP/1.1" 200 -
+2026-06-26 11:45:03,329 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "POST /socket.io/?EIO=4&transport=polling&t=Py3Y7WE&sid=NFlPn06-FiqjGSFEAAAc HTTP/1.1" 200 -
+2026-06-26 11:45:03,442 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "GET /socket.io/?EIO=4&transport=polling&t=Py3Y7WH&sid=NFlPn06-FiqjGSFEAAAc HTTP/1.1" 200 -
+2026-06-26 11:45:03,493 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "GET /api/reports?status=pending HTTP/1.1" 200 -
+2026-06-26 11:45:03,553 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-06-26 11:45:03,606 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 11:45:03] "GET /api/reports?status=investigating HTTP/1.1" 200 -
+2026-06-26 12:00:01,792 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 12:00:01,797 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 12:00:01,799 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 12:00:03,559 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 12:00:03,569 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 12:00:03,622 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:00:03] "GET /socket.io/?EIO=4&transport=polling&t=Py3bZ6s HTTP/1.1" 200 -
+2026-06-26 12:00:03,633 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:00:03] "POST /socket.io/?EIO=4&transport=polling&t=Py3bZMg&sid=lWYLy9jZE1Wfo87JAAAA HTTP/1.1" 200 -
+2026-06-26 12:00:03,941 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:00:03] "GET /socket.io/?EIO=4&transport=polling&t=Py3bZMh&sid=lWYLy9jZE1Wfo87JAAAA HTTP/1.1" 200 -
+2026-06-26 12:00:04,252 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:00:04] "GET /socket.io/?EIO=4&transport=polling&t=Py3bZRe&sid=lWYLy9jZE1Wfo87JAAAA HTTP/1.1" 200 -
+2026-06-26 12:01:35,124 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 12:01:35,129 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 12:01:35,130 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 12:01:36,915 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 12:01:36,919 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 12:02:00,690 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:02:00] "GET /officer HTTP/1.1" 200 -
+2026-06-26 12:02:01,093 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:02:01] "GET /socket.io/?EIO=4&transport=polling&t=Py3c01_ HTTP/1.1" 200 -
+2026-06-26 12:02:01,126 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:02:01] "POST /socket.io/?EIO=4&transport=polling&t=Py3c02S&sid=0KQcRBRKyu5sphibAAAA HTTP/1.1" 200 -
+2026-06-26 12:02:01,440 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:02:01] "GET /socket.io/?EIO=4&transport=polling&t=Py3c02X&sid=0KQcRBRKyu5sphibAAAA HTTP/1.1" 200 -
+2026-06-26 12:02:01,550 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:02:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-06-26 12:02:01,786 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:02:01] "GET /api/reports?status=pending HTTP/1.1" 200 -
+2026-06-26 12:02:01,817 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:02:01] "GET /api/reports?status=investigating HTTP/1.1" 200 -
+2026-06-26 12:06:04,619 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:06:04] "GET /officer HTTP/1.1" 200 -
+2026-06-26 12:06:04,623 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:06:04] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-06-26 12:06:04,823 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:06:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 12:21:47,243 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 12:21:47,245 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 12:21:47,246 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 12:21:48,428 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 12:21:48,431 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 12:22:48,716 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-26 12:22:48,722 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-26 12:22:48,723 - werkzeug - INFO -  * Restarting with stat
+2026-06-26 12:22:49,813 - werkzeug - WARNING -  * Debugger is active!
+2026-06-26 12:22:49,816 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-26 12:23:53,184 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:53] "GET / HTTP/1.1" 200 -
+2026-06-26 12:23:53,317 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:53] "GET /static/css/style.css HTTP/1.1" 200 -
+2026-06-26 12:23:53,408 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:53] "GET /static/js/app.js HTTP/1.1" 200 -
+2026-06-26 12:23:53,564 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:53] "GET /static/js/alerts.js HTTP/1.1" 200 -
+2026-06-26 12:23:53,565 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:53] "GET /static/js/auth.js HTTP/1.1" 200 -
+2026-06-26 12:23:53,982 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-06-26 12:23:53,983 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:53] "GET /socket.io/?EIO=4&transport=polling&t=Py3h0Tp HTTP/1.1" 200 -
+2026-06-26 12:23:54,001 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:54] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 12:23:54,027 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:54] "GET /api/reports?per_page=5 HTTP/1.1" 200 -
+2026-06-26 12:23:54,168 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:54] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 12:23:54,326 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:54] "POST /socket.io/?EIO=4&transport=polling&t=Py3h0aN&sid=MhwUcYI1RP1YXu3bAAAA HTTP/1.1" 200 -
+2026-06-26 12:23:54,327 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:54] "GET /socket.io/?EIO=4&transport=polling&t=Py3h0aS&sid=MhwUcYI1RP1YXu3bAAAA HTTP/1.1" 200 -
+2026-06-26 12:23:54,337 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:23:54] "GET /socket.io/?EIO=4&transport=polling&t=Py3h0fT&sid=MhwUcYI1RP1YXu3bAAAA HTTP/1.1" 200 -
+2026-06-26 12:24:21,450 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:21] "GET /officer HTTP/1.1" 200 -
+2026-06-26 12:24:21,487 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 12:24:21,490 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:21] "GET /socket.io/?EIO=4&transport=websocket&sid=MhwUcYI1RP1YXu3bAAAA HTTP/1.1" 200 -
+2026-06-26 12:24:21,690 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:21] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-26 12:24:21,811 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:21] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-26 12:24:21,813 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:21] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-26 12:24:22,173 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "GET /socket.io/?EIO=4&transport=polling&t=Py3h7ND HTTP/1.1" 200 -
+2026-06-26 12:24:22,176 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-26 12:24:22,249 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "GET /api/reports?per_page=50 HTTP/1.1" 200 -
+2026-06-26 12:24:22,422 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "POST /socket.io/?EIO=4&transport=polling&t=Py3h7Sg&sid=BmkyT6Ncdd58y2sSAAAC HTTP/1.1" 200 -
+2026-06-26 12:24:22,506 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "GET /socket.io/?EIO=4&transport=polling&t=Py3h7Sk&sid=BmkyT6Ncdd58y2sSAAAC HTTP/1.1" 200 -
+2026-06-26 12:24:22,558 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "GET /api/reports?status=pending HTTP/1.1" 200 -
+2026-06-26 12:24:22,575 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "GET /socket.io/?EIO=4&transport=polling&t=Py3h7Xp&sid=BmkyT6Ncdd58y2sSAAAC HTTP/1.1" 200 -
+2026-06-26 12:24:22,623 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:22] "GET /api/reports?status=investigating HTTP/1.1" 200 -
+2026-06-26 12:24:55,343 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-26 12:24:55,667 - werkzeug - INFO - 127.0.0.1 - - [26/Jun/2026 12:24:55] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2026-06-27 09:46:59,191 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://172.20.10.2:5001
+2026-06-27 09:46:59,195 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-06-27 09:46:59,196 - werkzeug - INFO -  * Restarting with stat
+2026-06-27 09:47:01,218 - werkzeug - WARNING -  * Debugger is active!
+2026-06-27 09:47:01,228 - werkzeug - INFO -  * Debugger PIN: 335-850-404
+2026-06-27 09:47:59,721 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:47:59] "GET /officer HTTP/1.1" 200 -
+2026-06-27 09:48:00,143 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-27 09:48:00,171 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:00] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-27 09:48:00,174 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:00] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-27 09:48:00,179 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:00] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-27 09:48:00,210 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:00] "GET /static/js/map.js HTTP/1.1" 200 -
+2026-06-27 09:48:00,861 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:00] "GET /socket.io/?EIO=4&transport=polling&t=Py8Gwl5 HTTP/1.1" 200 -
+2026-06-27 09:48:00,937 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-06-27 09:48:01,076 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:01] "POST /socket.io/?EIO=4&transport=polling&t=Py8Gws-&sid=Vpt5VS-c_tyxBzcCAAAA HTTP/1.1" 200 -
+2026-06-27 09:48:01,089 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:01] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-27 09:48:01,239 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:01] "GET /api/reports?per_page=50 HTTP/1.1" 200 -
+2026-06-27 09:48:01,274 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:01] "GET /socket.io/?EIO=4&transport=polling&t=Py8GwtD&sid=Vpt5VS-c_tyxBzcCAAAA HTTP/1.1" 200 -
+2026-06-27 09:48:01,401 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:01] "GET /api/reports?status=pending HTTP/1.1" 200 -
+2026-06-27 09:48:01,574 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:01] "GET /socket.io/?EIO=4&transport=polling&t=Py8GwyV&sid=Vpt5VS-c_tyxBzcCAAAA HTTP/1.1" 200 -
+2026-06-27 09:48:01,673 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:48:01] "GET /api/reports?status=investigating HTTP/1.1" 200 -
+2026-06-27 09:49:31,040 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:49:31] "[35m[1mPOST /api/alerts HTTP/1.1[0m" 201 -
+2026-06-27 09:50:15,513 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:15] "GET /login HTTP/1.1" 200 -
+2026-06-27 09:50:15,597 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-27 09:50:15,612 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:15] "GET /socket.io/?EIO=4&transport=websocket&sid=Vpt5VS-c_tyxBzcCAAAA HTTP/1.1" 200 -
+2026-06-27 09:50:15,936 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:15] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-27 09:50:15,942 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:15] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-27 09:50:15,948 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:15] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-27 09:50:16,186 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:16] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-27 09:50:16,285 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:16] "GET /socket.io/?EIO=4&transport=polling&t=Py8HRqZ HTTP/1.1" 200 -
+2026-06-27 09:50:16,302 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:16] "POST /socket.io/?EIO=4&transport=polling&t=Py8HRvY&sid=WVH7-pd1zxb1iwK1AAAC HTTP/1.1" 200 -
+2026-06-27 09:50:16,612 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:16] "GET /socket.io/?EIO=4&transport=polling&t=Py8HRva&sid=WVH7-pd1zxb1iwK1AAAC HTTP/1.1" 200 -
+2026-06-27 09:50:46,125 - CrimeReportingSystem - INFO - User logged in: citizen_mike
+2026-06-27 09:50:46,128 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:46] "POST /api/auth/login HTTP/1.1" 200 -
+2026-06-27 09:50:47,255 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:47] "GET /dashboard HTTP/1.1" 200 -
+2026-06-27 09:50:47,299 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:47] "GET /socket.io/?EIO=4&transport=websocket&sid=WVH7-pd1zxb1iwK1AAAC HTTP/1.1" 200 -
+2026-06-27 09:50:47,472 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-27 09:50:47,617 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:47] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-27 09:50:47,618 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:47] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-27 09:50:47,620 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:47] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-27 09:50:47,993 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:47] "GET /socket.io/?EIO=4&transport=polling&t=Py8HZZK HTTP/1.1" 200 -
+2026-06-27 09:50:48,015 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:48] "GET /api/notifications HTTP/1.1" 200 -
+2026-06-27 09:50:48,020 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:48] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-27 09:50:48,064 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:48] "GET /api/reports/my HTTP/1.1" 200 -
+2026-06-27 09:50:48,197 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:48] "POST /socket.io/?EIO=4&transport=polling&t=Py8HZfQ&sid=0WkkjRr6MLTe2DVWAAAE HTTP/1.1" 200 -
+2026-06-27 09:50:48,343 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:48] "GET /socket.io/?EIO=4&transport=polling&t=Py8HZfT&sid=0WkkjRr6MLTe2DVWAAAE HTTP/1.1" 200 -
+2026-06-27 09:50:48,353 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:50:48] "GET /socket.io/?EIO=4&transport=polling&t=Py8HZkS&sid=0WkkjRr6MLTe2DVWAAAE HTTP/1.1" 200 -
+2026-06-27 09:51:27,282 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:27] "GET /map HTTP/1.1" 200 -
+2026-06-27 09:51:27,320 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-06-27 09:51:27,331 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:27] "GET /socket.io/?EIO=4&transport=websocket&sid=0WkkjRr6MLTe2DVWAAAE HTTP/1.1" 200 -
+2026-06-27 09:51:27,474 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:27] "[36mGET /static/js/app.js HTTP/1.1[0m" 304 -
+2026-06-27 09:51:27,639 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:27] "[36mGET /static/js/auth.js HTTP/1.1[0m" 304 -
+2026-06-27 09:51:27,641 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:27] "[36mGET /static/js/alerts.js HTTP/1.1[0m" 304 -
+2026-06-27 09:51:27,647 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:27] "[36mGET /static/js/map.js HTTP/1.1[0m" 304 -
+2026-06-27 09:51:28,015 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:28] "GET /socket.io/?EIO=4&transport=polling&t=Py8HjKz HTTP/1.1" 200 -
+2026-06-27 09:51:28,022 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:28] "GET /api/alerts HTTP/1.1" 200 -
+2026-06-27 09:51:28,069 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:28] "GET /api/reports/map HTTP/1.1" 200 -
+2026-06-27 09:51:28,237 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:28] "POST /socket.io/?EIO=4&transport=polling&t=Py8HjQT&sid=VhxcgEnp3SyZO9gpAAAG HTTP/1.1" 200 -
+2026-06-27 09:51:28,348 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:28] "GET /socket.io/?EIO=4&transport=polling&t=Py8HjQU&sid=VhxcgEnp3SyZO9gpAAAG HTTP/1.1" 200 -
+2026-06-27 09:51:28,418 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:28] "GET /socket.io/?EIO=4&transport=polling&t=Py8HjVh&sid=VhxcgEnp3SyZO9gpAAAG HTTP/1.1" 200 -
+2026-06-27 09:51:28,422 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2026 09:51:28] "GET /api/alerts HTTP/1.1" 200 -

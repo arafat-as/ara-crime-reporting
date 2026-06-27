@@ -10,6 +10,7 @@ const Admin = {
         
         this.fetchStats();
         this.fetchUsers();
+        this.fetchLogs();
         this.setupEventListeners();
         
         // Setup Chart.js global defaults for dark theme
@@ -176,10 +177,51 @@ const Admin = {
         }
     },
     
+    async fetchLogs() {
+        try {
+            const data = await App.api('/admin/logs?per_page=50');
+            const tbody = document.getElementById('logs-body');
+
+            if (!data.logs || data.logs.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 30px; color: var(--text-muted);">No activity recorded yet.</td></tr>`;
+                return;
+            }
+
+            let html = '';
+            data.logs.forEach(log => {
+                const userLabel = log.user
+                    ? `${log.user.full_name} <span style="color: var(--text-muted); font-size: 0.8rem;">(@${log.user.username})</span>`
+                    : '<span style="color: var(--text-muted);">System</span>';
+
+                html += `
+                    <tr>
+                        <td><small style="color: var(--text-muted);">${App.formatDate(log.created_at)}</small></td>
+                        <td>${userLabel}</td>
+                        <td><span class="badge" style="background: rgba(0, 212, 255, 0.15); color: var(--primary-color);">${log.action}</span></td>
+                        <td><small>${log.details || '-'}</small></td>
+                        <td><small style="color: var(--text-muted);">${log.ip_address || '-'}</small></td>
+                    </tr>
+                `;
+            });
+
+            tbody.innerHTML = html;
+        } catch (error) {
+            console.error('Failed to fetch activity logs:', error);
+            const tbody = document.getElementById('logs-body');
+            if (tbody) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 20px; color: var(--color-critical);">Failed to load activity log.</td></tr>`;
+            }
+        }
+    },
+    
     setupEventListeners() {
         document.getElementById('user-search').addEventListener('input', (e) => {
             // Debounce could be added here, keeping it simple for now
             this.fetchUsers(e.target.value);
+        });
+
+        document.getElementById('btn-refresh-logs').addEventListener('click', () => {
+            this.fetchLogs();
         });
         
         document.getElementById('role-form').addEventListener('submit', async (e) => {

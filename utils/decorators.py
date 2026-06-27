@@ -16,7 +16,7 @@ def role_required(*roles):
         @wraps(fn)
         def wrapper(*args, **kwargs):
             verify_jwt_in_request()
-            user_id = get_jwt_identity()
+            user_id = int(get_jwt_identity())
             user = User.query.get(user_id)
             if not user:
                 return jsonify({'error': 'User not found'}), 404
@@ -34,7 +34,7 @@ def admin_required(fn):
     @wraps(fn)
     def wrapper(*args, **kwargs):
         verify_jwt_in_request()
-        user_id = get_jwt_identity()
+        user_id = int(get_jwt_identity())
         user = User.query.get(user_id)
         if not user or user.role != 'admin':
             return jsonify({'error': 'Admin access required'}), 403

@@ -102,7 +102,7 @@ def change_role(user_id):
     old_role = user.role
     user.role = new_role
     db.session.commit()
-    log_activity(get_jwt_identity(), 'role_change',
+    log_activity(int(get_jwt_identity()), 'role_change',
                  f'User {user.username}: {old_role} → {new_role}')
     return jsonify({'message': 'Role updated', 'user': user.to_dict()}), 200
 
@@ -115,7 +115,7 @@ def deactivate_user(user_id):
     if not user:
         return jsonify({'error': 'User not found'}), 404
 
-    admin_id = get_jwt_identity()
+    admin_id = int(get_jwt_identity())
     if user.id == admin_id:
         return jsonify({'error': 'Cannot deactivate your own account'}), 400
 

@@ -73,6 +73,33 @@
             </table>
         </div>
     </div>
+
+    <!-- Activity Log -->
+    <div class="glass-panel" style="padding: 25px; margin-top: 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;">
+            <h3 style="margin: 0;"><i class="fa-solid fa-clipboard-list"></i> System Activity Log</h3>
+            <button id="btn-refresh-logs" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.8rem;">
+                <i class="fa-solid fa-rotate"></i> Refresh
+            </button>
+        </div>
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>User</th>
+                        <th>Action</th>
+                        <th>Details</th>
+                        <th>IP Address</th>
+                    </tr>
+                </thead>
+                <tbody id="logs-body">
+                    <tr><td colspan="5" style="text-align: center; padding: 30px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <!-- Role Change Modal -->
@@ -80,7 +107,7 @@
     <div class="modal-content glass-panel" style="max-width: 400px;">
         <div class="modal-header">
             <h3>Change User Role</h3>
-            <button class="modal-close" onclick="closeModal('role-modal')">&times;</button>
+            <button class="modal-close" onclick="Admin.closeModal('role-modal')">&times;</button>
         </div>
         <div class="modal-body">
             <p id="role-user-name" style="margin-bottom: 15px; font-weight: bold;"></p>

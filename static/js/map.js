@@ -138,4 +138,49 @@ class CrimeMap {
         
         return marker;
     }
+
+    // Draw active alert coverage zones as semi-transparent circles, so
+    // citizens can see which areas currently have an active public safety
+    // warning, alongside individual incident markers.
+    loadAlertZones(alerts) {
+        if (!this.alertLayer) {
+            this.alertLayer = L.layerGroup().addTo(this.map);
+        }
+        this.alertLayer.clearLayers();
+
+        if (!alerts || alerts.length === 0) return;
+
+        const colors = {
+            'low': '#10b981',
+            'medium': '#f59e0b',
+            'high': '#f97316',
+            'critical': '#ef4444'
+        };
+
+        alerts.forEach(alert => {
+            if (alert.area_latitude == null || alert.area_longitude == null) return;
+
+            const color = colors[alert.severity] || '#3b82f6';
+            const radiusMeters = (alert.area_radius || 5) * 1000;
+
+            const circle = L.circle([alert.area_latitude, alert.area_longitude], {
+                radius: radiusMeters,
+                color: color,
+                fillColor: color,
+                fillOpacity: 0.15,
+                weight: 2,
+                dashArray: '6, 6'
+            });
+
+            circle.bindPopup(`
+                <div style="min-width: 200px; color: #333;">
+                    <h4 style="margin: 0 0 5px 0; border-bottom: 1px solid #eee; padding-bottom: 5px;">🚨 ${alert.title}</h4>
+                    <p style="margin: 0 0 5px 0; font-size: 12px;">${alert.message}</p>
+                    <p style="margin: 0; font-size: 11px; color: #888;">Coverage radius: ${alert.area_radius} km</p>
+                </div>
+            `);
+
+            this.alertLayer.addLayer(circle);
+        });
+    }
 }

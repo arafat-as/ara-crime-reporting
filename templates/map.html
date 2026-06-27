@@ -33,6 +33,31 @@
             console.error('Error loading map data:', error);
             App.showToast('Error', 'Failed to load map data.', 'error');
         }
+
+        try {
+            const alertData = await App.api('/alerts');
+            crimeMap.loadAlertZones(alertData.alerts);
+        } catch (error) {
+            console.error('Error loading alert zones:', error);
+        }
+
+        // Keep alert zones live: redraw whenever a new alert is broadcast.
+        // Alerts.initSocket() in alerts.js connects the socket on the same
+        // DOMContentLoaded tick, so we briefly retry until it's ready rather
+        // than assuming it exists immediately.
+        const attachAlertSocketListener = (attempt = 0) => {
+            if (window.Alerts && Alerts.socket) {
+                Alerts.socket.on('new_alert', async () => {
+                    try {
+                        const refreshed = await App.api('/alerts');
+                        crimeMap.loadAlertZones(refreshed.alerts);
+                    } catch (e) { /* ignore */ }
+                });
+            } else if (attempt < 10) {
+                setTimeout(() => attachAlertSocketListener(attempt + 1), 200);
+            }
+        };
+        attachAlertSocketListener();
     });
 </script>
 {% endblock %}

@@ -93,9 +93,22 @@
                     <label class="form-label">Message / Instructions to Citizens</label>
                     <textarea name="message" class="form-control" rows="4" required placeholder="Avoid the area..."></textarea>
                 </div>
-                
-                <!-- Simplified for demo: Not using map picker for alert to save space, but could add it -->
-                
+
+                <div class="form-group">
+                    <label class="form-label">Affected Area (click the map to set the alert center)</label>
+                    <div id="alert-location-map" style="height: 220px; border-radius: 8px; margin-bottom: 10px;"></div>
+                    <small id="alert-location-status" style="color: var(--text-muted); display: block; margin-bottom: 10px;">
+                        No location selected — alert will be sent to all citizens.
+                    </small>
+                    <input type="hidden" name="area_latitude" id="alert_latitude">
+                    <input type="hidden" name="area_longitude" id="alert_longitude">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Alert Radius (km)</label>
+                    <input type="number" name="area_radius" id="alert_radius" class="form-control" min="0.5" max="50" step="0.5" value="5">
+                </div>
+
                 <button type="submit" class="btn btn-danger" style="width: 100%;">Send Broadcast Now</button>
             </form>
         </div>
@@ -104,8 +117,10 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
 <script>
     let currentFilter = '';
+    let alertLocationMap = null;
     
     document.addEventListener('DOMContentLoaded', () => {
         if (!Auth.requireRole(['officer', 'admin'])) return;
@@ -127,8 +142,16 @@
             const data = {
                 title: form.title.value,
                 severity: form.severity.value,
-                message: form.message.value
+                message: form.message.value,
+                area_radius: form.area_radius.value
             };
+            
+            const lat = document.getElementById('alert_latitude').value;
+            const lng = document.getElementById('alert_longitude').value;
+            if (lat && lng) {
+                data.area_latitude = lat;
+                data.area_longitude = lng;
+            }
             
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Broadcasting...';
@@ -138,9 +161,12 @@
                     method: 'POST',
                     body: JSON.stringify(data)
                 });
-                App.showToast('Broadcast Sent', 'Alert has been sent to all citizens.', 'success');
+                App.showToast('Broadcast Sent', lat ? 'Alert sent to citizens in the selected area.' : 'Alert has been sent to all citizens.', 'success');
                 closeModal('alert-modal');
                 form.reset();
+                document.getElementById('alert_latitude').value = '';
+                document.getElementById('alert_longitude').value = '';
+                document.getElementById('alert-location-status').textContent = 'No location selected — alert will be sent to all citizens.';
             } catch (err) {
                 App.showToast('Failed to send', err.message, 'error');
             } finally {
@@ -220,7 +246,35 @@
         tbody.innerHTML = html;
     }
     
-    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+        if (id === 'alert-modal') {
+            // Leaflet needs the container to be visible before it can size itself correctly,
+            // so we initialize on open rather than on page load.
+            setTimeout(() => {
+                if (!alertLocationMap) {
+                    alertLocationMap = new CrimeMap('alert-location-map', {
+                        onClick: (e) => {
+                            const lat = e.latlng.lat;
+                            const lng = e.latlng.lng;
+                            document.getElementById('alert_latitude').value = lat.toFixed(6);
+                            document.getElementById('alert_longitude').value = lng.toFixed(6);
+                            document.getElementById('alert-location-status').textContent =
+                                `Location set: ${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+                            alertLocationMap.setDraggableMarker(lat, lng, (newLat, newLng) => {
+                                document.getElementById('alert_latitude').value = newLat.toFixed(6);
+                                document.getElementById('alert_longitude').value = newLng.toFixed(6);
+                                document.getElementById('alert-location-status').textContent =
+                                    `Location set: ${newLat.toFixed(4)}, ${newLng.toFixed(4)}`;
+                            });
+                        }
+                    });
+                } else {
+                    alertLocationMap.map.invalidateSize();
+                }
+            }, 100);
+        }
+    }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 </script>
 {% endblock %}

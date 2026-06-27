@@ -14,7 +14,7 @@ reports_bp = Blueprint('reports', __name__)
 @jwt_required()
 def create_report():
     """Submit a new crime report."""
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
 
     # Handle both JSON and form-data (for file uploads)
     if request.content_type and 'multipart/form-data' in request.content_type:
@@ -138,7 +138,7 @@ def get_report(report_id):
 def add_comment(report_id):
     """Add a comment to a report."""
     from models import ReportComment
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     report = CrimeReport.query.get(report_id)
     
     if not report:
@@ -166,7 +166,7 @@ def add_comment(report_id):
 @jwt_required()
 def update_report(report_id):
     """Update a report (officer/admin can change status, assign)."""
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     user = User.query.get(user_id)
     report = CrimeReport.query.get(report_id)
 
@@ -226,7 +226,7 @@ def delete_report(report_id):
     try:
         db.session.delete(report)
         db.session.commit()
-        log_activity(get_jwt_identity(), 'report_deleted', f'Report #{report_id} deleted')
+        log_activity(int(get_jwt_identity()), 'report_deleted', f'Report #{report_id} deleted')
         return jsonify({'message': 'Report deleted'}), 200
     except Exception as e:
         db.session.rollback()
@@ -238,7 +238,7 @@ def delete_report(report_id):
 @jwt_required()
 def get_my_reports():
     """Get reports submitted by the current user."""
-    user_id = get_jwt_identity()
+    user_id = int(get_jwt_identity())
     page = request.args.get('page', 1, type=int)
     per_page = request.args.get('per_page', 20, type=int)
 

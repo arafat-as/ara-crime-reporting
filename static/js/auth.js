@@ -90,6 +90,21 @@ const Auth = {
             return;
         }
         
+        // Try to capture the user's location so they can receive area-based
+        // alerts relevant to where they actually live. This is optional and
+        // never blocks registration — if it's denied or times out, we just
+        // proceed without it.
+        try {
+            const position = await new Promise((resolve, reject) => {
+                if (!navigator.geolocation) return reject(new Error('Not supported'));
+                navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 4000 });
+            });
+            data.latitude = position.coords.latitude;
+            data.longitude = position.coords.longitude;
+        } catch (geoError) {
+            // No location available — registration proceeds without it.
+        }
+        
         try {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Creating Account...';

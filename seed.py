@@ -4,10 +4,11 @@ Run: python seed.py
 """
 import random
 from datetime import datetime, timedelta, timezone
+import os
 from app import create_app
 from models import db, User, CrimeCategory, CrimeReport, Alert, Notification
 
-app = create_app('development')
+app = create_app(os.environ.get('FLASK_CONFIG', 'development'))
 
 # Crime categories
 CATEGORIES = [
@@ -25,14 +26,14 @@ CATEGORIES = [
     ('Other', 'other', 'Other criminal activities not listed above'),
 ]
 
-# Demo users
+# Demo users (username, email, password, full_name, role, phone, latitude, longitude)
 USERS = [
-    ('admin', 'admin@crimealert.ng', 'Admin@123', 'System Administrator', 'admin', '08012345670'),
-    ('officer_john', 'john.officer@police.ng', 'Officer@123', 'John Adeyemi', 'officer', '08012345671'),
-    ('officer_grace', 'grace.officer@police.ng', 'Officer@123', 'Grace Okonkwo', 'officer', '08012345672'),
-    ('citizen_mike', 'mike@gmail.com', 'Citizen@123', 'Michael Eze', 'citizen', '08012345673'),
-    ('citizen_ada', 'ada@gmail.com', 'Citizen@123', 'Adaeze Nwosu', 'citizen', '08012345674'),
-    ('citizen_emeka', 'emeka@gmail.com', 'Citizen@123', 'Emeka Obi', 'citizen', '08012345675'),
+    ('admin', 'admin@crimealert.ng', 'Admin@123', 'System Administrator', 'admin', '08012345670', None, None),
+    ('officer_john', 'john.officer@police.ng', 'Officer@123', 'John Adeyemi', 'officer', '08012345671', None, None),
+    ('officer_grace', 'grace.officer@police.ng', 'Officer@123', 'Grace Okonkwo', 'officer', '08012345672', None, None),
+    ('citizen_mike', 'mike@gmail.com', 'Citizen@123', 'Michael Eze', 'citizen', '08012345673', 6.6018, 3.3515),   # Ikeja
+    ('citizen_ada', 'ada@gmail.com', 'Citizen@123', 'Adaeze Nwosu', 'citizen', '08012345674', 6.4474, 3.4737),    # Lekki
+    ('citizen_emeka', 'emeka@gmail.com', 'Citizen@123', 'Emeka Obi', 'citizen', '08012345675', 6.5244, 3.3792),   # Yaba
 ]
 
 # Sample reports (title, description, category_index, severity, status, lat, lng, address)
@@ -75,9 +76,10 @@ def seed():
         print("Seeding users...")
         users = []
         colors = ['#00d4ff', '#8b5cf6', '#f97316', '#10b981', '#ef4444', '#f59e0b']
-        for i, (uname, email, pw, name, role, phone) in enumerate(USERS):
+        for i, (uname, email, pw, name, role, phone, lat, lng) in enumerate(USERS):
             user = User(username=uname, email=email, full_name=name,
-                        phone=phone, role=role, avatar_color=colors[i % len(colors)])
+                        phone=phone, role=role, avatar_color=colors[i % len(colors)],
+                        latitude=lat, longitude=lng)
             user.set_password(pw)
             db.session.add(user)
             users.append(user)
