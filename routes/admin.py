@@ -1,6 +1,7 @@
 """
 Admin routes — dashboard stats, user management, activity logs.
 """
+import os
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import get_jwt_identity, jwt_required
 from sqlalchemy import text
@@ -12,17 +13,23 @@ admin_bp = Blueprint('admin', __name__)
 
 
 @admin_bp.route('/api/admin/run-migration', methods=['POST'])
-@jwt_required()
-@admin_required
 def run_migration():
     """
     One-time, idempotent schema fix for environments without shell access
     (e.g. Render's free tier). Adds the latitude/longitude columns to the
     users table if they don't already exist. Safe to call more than once.
 
+    Protected by a secret key (not login) because a missing column can
+    break login itself, creating a chicken-and-egg problem otherwise.
+
     NOTE: this route is intentionally temporary — remove it once the schema
     has been confirmed updated in production.
     """
+    provided_key = request.headers.get('X-Migration-Key', '')
+    expected_key = os.environ.get('SECRET_KEY', '')
+    if not expected_key or provided_key != expected_key:
+        return jsonify({'error': 'Unauthorized'}), 401
+
     try:
         db.session.execute(text(
             'ALTER TABLE users ADD COLUMN IF NOT EXISTS latitude FLOAT'
