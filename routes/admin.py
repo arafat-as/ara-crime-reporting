@@ -2,12 +2,41 @@
 Admin routes — dashboard stats, user management, activity logs.
 """
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, jwt_required
+from sqlalchemy import text
 from models import db, User, CrimeReport, Alert, CrimeCategory, ActivityLog
 from utils.decorators import role_required, admin_required
 from utils.helpers import log_activity, logger
 
 admin_bp = Blueprint('admin', __name__)
+
+
+@admin_bp.route('/api/admin/run-migration', methods=['POST'])
+@jwt_required()
+@admin_required
+def run_migration():
+    """
+    One-time, idempotent schema fix for environments without shell access
+    (e.g. Render's free tier). Adds the latitude/longitude columns to the
+    users table if they don't already exist. Safe to call more than once.
+
+    NOTE: this route is intentionally temporary — remove it once the schema
+    has been confirmed updated in production.
+    """
+    try:
+        db.session.execute(text(
+            'ALTER TABLE users ADD COLUMN IF NOT EXISTS latitude FLOAT'
+        ))
+        db.session.execute(text(
+            'ALTER TABLE users ADD COLUMN IF NOT EXISTS longitude FLOAT'
+        ))
+        db.session.commit()
+        logger.info("Migration run: added latitude/longitude columns to users table.")
+        return jsonify({'message': 'Migration applied successfully.'}), 200
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Migration failed: {str(e)}")
+        return jsonify({'error': str(e)}), 500
 
 
 @admin_bp.route('/api/admin/stats', methods=['GET'])
